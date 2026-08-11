@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVIV-BOT - Chat Interface</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(45deg, #FF69B4, #4B0082);
+            color: #00ffff;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        #jsdos {
+            width: 640px;
+            height: 400px;
+            border: 3px solid #00ffff;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px #000;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        #status {
+            margin: 15px 0;
+            color: #00ffff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+        .instructions {
+            margin: 20px;
+            padding: 25px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            max-width: 800px;
+            border: 2px solid #00ffff;
+        }
+        .back-button {
+            margin-top: 20px;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+    <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+</head>
+<body>
+    <h1>AVIV-BOT</h1>
+    <div id="status">Ready to chat...</div>
+    <canvas id="jsdos"></canvas>
+    <div>
+        <button onclick="startChat()">Start Chat</button>
+        <button onclick="toggleFullscreen()">Fullscreen</button>
+    </div>
+    <div class="instructions">
+        <h3>Chat Instructions:</h3>
+        <ul>
+            <li>Type your messages and press Enter</li>
+            <li>Ask about Aviv, 90s culture, or Jerusalem</li>
+            <li>Use natural, conversational language</li>
+            <li>ESC: Release keyboard focus</li>
+            <li>Alt + Enter: Toggle fullscreen</li>
+        </ul>
+    </div>
+    <a href="index.html" class="back-button">« Return to Main Menu</a>
+
+    <script>
+        let dosbox = null;
+
+        async function startChat() {
+            const status = document.getElementById('status');
+            status.textContent = 'Initializing chat...';
+            
+            try {
+                dosbox = Dos(document.getElementById('jsdos'), {
+                    wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+                    wasmUrl: "https://js-dos.com/6.22/current/wdosbox.wasm.js",
+                    cycles: "12000",
+                    autolock: false,
+                    scaleFactor: 1,
+                    renderingMode: "canvas"
+                });
+
+                dosbox.ready((fs, main) => {
+                    fs.extract('/games/AVIVBOT.zip').then(() => {
+                        main([
+                            "-c", "cd AVIVBOT",
+                            "-c", "cycles = 12000",
+                            "-c", "START.BAT"
+                        ])
+                        .then(() => {
+                            status.textContent = 'Chat session started. Type to begin conversation...';
+                        })
+                        .catch((error) => {
+                            status.textContent = 'Error: ' + error;
+                        });
+                    }).catch((error) => {
+                        status.textContent = 'Error loading chat: ' + error;
+                    });
+                });
+            } catch (error) {
+                status.textContent = 'Error: ' + error.message;
+            }
+        }
+
+        function toggleFullscreen() {
+            const canvas = document.getElementById('jsdos');
+            if (!document.fullscreenElement) {
+                canvas.requestFullscreen().catch(err => {
+                    console.error('Fullscreen error:', err);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.altKey) {
+                toggleFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

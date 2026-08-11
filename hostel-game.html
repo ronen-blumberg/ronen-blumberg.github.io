@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOSTEL - Text Adventure</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(-45deg, #1a1a1a, #2c3e50, #2c3e50, #16222A);
+            color: #00ff00;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        #jsdos {
+            width: 640px;
+            height: 400px;
+            border: 2px solid #00ff00;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #00ff00, #008800);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+        #status {
+            margin: 15px 0;
+            color: #00ff00;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+        .instructions {
+            margin: 20px;
+            padding: 25px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+            max-width: 800px;
+            border: 1px solid #00ff00;
+        }
+        .back-button {
+            margin-top: 20px;
+            color: #00ff00;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #00ff00;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+    </style>
+    <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+</head>
+<body>
+    <h1>HOSTEL</h1>
+    <div id="status">System ready for initialization...</div>
+    <canvas id="jsdos"></canvas>
+    <div>
+        <button onclick="startGame()">Begin Adventure</button>
+        <button onclick="toggleFullscreen()">Toggle Display</button>
+    </div>
+    <div class="instructions">
+        <h3>Navigation Controls:</h3>
+        <ul>
+            <li>Type your commands and press Enter</li>
+            <li>Common commands: LOOK, GO, TAKE, USE, INVENTORY</li>
+            <li>Press ESC to release keyboard focus</li>
+            <li>Alt + Enter: Toggle fullscreen</li>
+            <li>Save your progress often</li>
+        </ul>
+    </div>
+    <a href="index.html" class="back-button">« Return to Main Terminal</a>
+
+    <script>
+        let dosbox = null;
+
+        async function startGame() {
+            const status = document.getElementById('status');
+            status.textContent = 'Initializing system...';
+            
+            try {
+                dosbox = Dos(document.getElementById('jsdos'), {
+                    wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+                    wasmUrl: "https://js-dos.com/6.22/current/wdosbox.wasm.js",
+                    cycles: "12000",         // Fixed cycles at 12000
+                    autolock: false,         // Disabled autolock
+                    scaleFactor: 1,          // Base scaling
+                    renderingMode: "canvas"  // Canvas rendering
+                });
+
+                dosbox.ready((fs, main) => {
+                    fs.extract('/games/HOSTEL.zip').then(() => {
+                        main([
+                            "-c", "cd HOSTEL",
+                            "-c", "cycles = 12000",
+                            "-c", "START.BAT"
+                        ])
+                        .then(() => {
+                            status.textContent = 'Adventure initialized. Begin your journey...';
+                        })
+                        .catch((error) => {
+                            status.textContent = 'Error: ' + error;
+                        });
+                    }).catch((error) => {
+                        status.textContent = 'Error loading adventure: ' + error;
+                    });
+                });
+            } catch (error) {
+                status.textContent = 'System error: ' + error.message;
+            }
+        }
+
+        function toggleFullscreen() {
+            const canvas = document.getElementById('jsdos');
+            if (!document.fullscreenElement) {
+                canvas.requestFullscreen().catch(err => {
+                    console.error('Display error:', err);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.altKey) {
+                toggleFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

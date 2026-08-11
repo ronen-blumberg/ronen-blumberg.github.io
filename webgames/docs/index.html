@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <meta name="description" content="Rachel - Blade Runner Chatbot" /> 
+    <title>Rachel - Blade Runner Chatbot</title> 
+    <link rel="stylesheet" href="css/site.css" /> 
+</head> 
+<body> 
+    <div class="chat-container"> 
+        <div class="chat-sidebar"> 
+            <div class="rachel-image"> 
+                <img src="images/Rachel.jpg" alt="Rachel" onerror="this.src='images/rachel-placeholder.jpg'" /> 
+            </div> 
+            <h2>Rachel</h2> 
+            <p class="subtitle">Nexus 7 Replicant</p> 
+        </div> 
+        <div class="chat-main"> 
+            <div class="chat-messages" id="messagesList"></div> 
+            <div class="chat-input"> 
+                <input type="text" id="messageInput" placeholder="Type a message to Rachel..." /> 
+                <button id="sendButton">Send</button> 
+            </div> 
+            <div class="chat-commands"> 
+                <p>Try: "Who are you?" | "Play green" | "Tell me about memories"</p> 
+            </div> 
+        </div> 
+    </div> 
+    <script src="js/chat.js"></script> 
+</body> 
+</html> 

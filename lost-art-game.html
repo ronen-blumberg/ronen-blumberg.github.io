@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lost Art (of programming) - DOS Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a;
+            color: #00ff00;
+            padding: 20px;
+        }
+        #jsdos {
+            width: 640px;
+            height: 400px;
+            border: 2px solid #00ff00;
+            margin: 20px 0;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #003300;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            margin: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        button:hover {
+            background-color: #00ff00;
+            color: #000;
+        }
+        #status {
+            margin: 10px 0;
+            font-style: italic;
+            color: #00ff00;
+        }
+        .instructions {
+            margin: 20px;
+            padding: 15px;
+            background-color: #001100;
+            border: 1px solid #00ff00;
+            max-width: 800px;
+            color: #00ff00;
+        }
+        .back-button {
+            margin-top: 20px;
+            color: #00ff00;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+</head>
+<body>
+    <h1>The Lost Art (of programming)</h1>
+    <div id="status">Ready to start...</div>
+    <canvas id="jsdos"></canvas>
+    <div>
+        <button onclick="startGame()">Initialize Program</button>
+        <button onclick="toggleFullscreen()">Toggle Display Mode</button>
+    </div>
+    <div class="instructions">
+        <h3>System Controls:</h3>
+        <ul>
+            <li>F4: Adjust processor speed</li>
+            <li>Alt + Enter: Full display mode</li>
+            <li>ESC: Release system control</li>
+        </ul>
+    </div>
+    <a href="index.html" class="back-button">« Return to Main Terminal</a>
+
+    <script>
+        let dosbox = null;
+
+        async function startGame() {
+            const status = document.getElementById('status');
+            status.textContent = 'Initializing system...';
+            
+            try {
+                dosbox = Dos(document.getElementById('jsdos'), {
+                    wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+                    wasmUrl: "https://js-dos.com/6.22/current/wdosbox.wasm.js",
+                    cycles: "12000",         // Fixed cycles at 12000
+                    autolock: false,         // Disabled autolock
+                    scaleFactor: 1,          // Base scaling
+                    renderingMode: "canvas"  // Canvas rendering
+                });
+
+                dosbox.ready((fs, main) => {
+                    fs.extract('/games/PROGGAME.zip').then(() => {
+                        main([
+                            "-c", "cd PROGGAME",
+                            "-c", "cycles = 12000",
+                            "-c", "START.BAT"
+                        ])
+                        .then(() => {
+                            status.textContent = 'Program initialized successfully.';
+                        })
+                        .catch((error) => {
+                            status.textContent = 'System error: ' + error;
+                        });
+                    }).catch((error) => {
+                        status.textContent = 'Loading error: ' + error;
+                    });
+                });
+            } catch (error) {
+                status.textContent = 'System failure: ' + error.message;
+            }
+        }
+
+        function toggleFullscreen() {
+            const canvas = document.getElementById('jsdos');
+            if (!document.fullscreenElement) {
+                canvas.requestFullscreen().catch(err => {
+                    console.error('Display mode error:', err);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.altKey) {
+                toggleFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

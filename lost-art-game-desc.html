@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lost Art (of programming) - Description</title>
+    <style>
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                             0.025em 0.04em 0 #fffc00; }
+            15% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                             0.025em 0.04em 0 #fffc00; }
+            16% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                             -0.05em -0.05em 0 #fffc00; }
+            49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                             -0.05em -0.05em 0 #fffc00; }
+            50% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                             0 -0.04em 0 #fffc00; }
+            99% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                             0 -0.04em 0 #fffc00; }
+            100% { text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
+                             -0.04em -0.025em 0 #fffc00; }
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: rgba(0, 20, 0, 0.9);
+            padding: 30px;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            margin: 20px;
+        }
+
+        h1 {
+            color: #00ff00;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            animation: glitch 2s infinite;
+            text-transform: uppercase;
+        }
+
+        .game-image {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .story {
+            font-size: 1.1em;
+            margin: 20px 0;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        .warning {
+            color: #ff0000;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ff0000;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.5; }
+        }
+
+        .play-button {
+            display: inline-block;
+            background-color: #003300;
+            color: #00ff00;
+            padding: 15px 30px;
+            text-decoration: none;
+            border: 2px solid #00ff00;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .play-button:hover {
+            background-color: #00ff00;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        .terminal {
+            background-color: #000;
+            padding: 20px;
+            border: 1px solid #00ff00;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-line;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Lost Art (of programming)</h1>
+        
+        <img src="https://i.imgur.com/WoaH1BW.png" alt="The Lost Art Screenshot" class="game-image"/>
+        
+        <div class="terminal">
+            SYSTEM INITIALIZED...
+            ACCESSING RESTRICTED FILES...
+            WARNING: UNAUTHORIZED ACCESS DETECTED
+            ENCRYPTION ENABLED...
+            
+            === CLASSIFIED INFORMATION ===
+        </div>
+
+        <div class="story">
+            THE TIME IS THE SECOND HALF OF THE 21ST CENTURY
+            THE WORLD HAS CHANGED BEYOND RECOGNITION
+            ALL WORK OR MOST OF IT IS DONE BY ROBOTS AND AI
+            HUMANS ONLY WORK IN THE SERVICE INDUSTRY
+            
+            THE WORLD IS RULED BY A FEW ELITE
+            THEY ARE THE RICHEST PEOPLE IN THE WORLD
+            THEY OWN THE WORLD AND EVERYTHING IN IT
+            THEY ARE THE MASTERS OF THE WORLD
+            
+            THE REST OF MANKIND ARE CONSIDERED AS USELESS
+            THEY PASS THE TIME DOING ART AND CREATING MUSIC
+            PLAYING GAMES AND WATCHING MOVIES AND TV
+            THEY ARE GIVEN A BASIC INCOME TO SURVIVE
+            
+            THEY ARE NOT ALLOWED TO WORK OR TO OWN ANYTHING
+            THERE IS A STRICT 'ONE CHILD' POLICY
+            THEY ARE NOT ALLOWED TO HAVE MORE THAN ONE CHILD
+            
+            THE RULING ELITE IS CORRUPT AND EVIL
+            CRIME IS RAMPANT AND THE POLICE IS CORRUPT
+            THE WORLD IS A DYSTOPIA
+        </div>
+
+        <div class="warning">
+            ⚠ WARNING: PROGRAMMING IS FORBIDDEN ⚠
+            UNAUTHORIZED CODING WILL RESULT IN TERMINATION
+        </div>
+
+        <div class="story">
+            YOU AS A MEMBER OF THE COMMON PEOPLE TRY TO SURVIVE BY LEARNING PROGRAMMING
+            PROGRAMMING IS FORBIDDEN SINCE ALL WORK IS DONE BY ROBOTS AND AI
+            YOU MUST DISGUISE YOUR IDENTITY WELL ONLINE
+            OTHERWISE IF YOUR TRUE IDENTITY WILL BE EXPOSE YOU WILL BE TERMINATED!
+            
+            WATCH OUT AND BE CAREFUL YOU ARE A SHEEP AMONG WOLVES!
+            
+            YOU HAVE A CONNECTION TO A MENTOR WHO TEACHES YOU PROGRAMMING
+            HIS NICKNAME IS 'CODEPOET' AND HE IS A MASTER PROGRAMMER
+        </div>
+
+        <div style="text-align: center;">
+            <a href="lost-art-game.html" class="play-button">EXECUTE PROGRAM</a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-button">« Return to Main Terminal</a>
+        </div>
+    </div>
+</body>
+</html>

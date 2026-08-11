@@ -1,0 +1,15 @@
+s:are>am
+s:am>are
+s:were>was
+s:was>were
+s:you>i
+s:i>you
+s:your>my
+s:my>your
+s:i've>you've
+s:you've>i've
+s:i'm>you're
+s:you're>i'm
+s:me>you
+s:i'll>you'll
+s:you'll>i'll

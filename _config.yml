@@ -1,0 +1,8 @@
+plugins:
+  - jekyll-paginate
+
+title: Ronen Blumberg Retro Games Website World
+baseurl: ""
+url: "https://ronen-blumberg.github.io"
+paginate: 10
+paginate_path: "/blog/page:num/"

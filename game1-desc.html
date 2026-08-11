@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hikikomori - Game Description</title>
+    <style>
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            5% { opacity: 0.95; }
+            10% { opacity: 0.97; }
+            15% { opacity: 0.94; }
+            20% { opacity: 0.98; }
+            25% { opacity: 0.95; }
+            30% { opacity: 0.97; }
+            35% { opacity: 0.96; }
+            40% { opacity: 0.97; }
+            45% { opacity: 0.94; }
+            50% { opacity: 0.98; }
+            55% { opacity: 0.95; }
+            60% { opacity: 0.97; }
+            65% { opacity: 0.95; }
+            70% { opacity: 0.98; }
+            75% { opacity: 0.94; }
+            80% { opacity: 0.97; }
+            85% { opacity: 0.96; }
+            90% { opacity: 0.98; }
+            95% { opacity: 0.95; }
+            100% { opacity: 0.97; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000084;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            animation: flicker 0.3s infinite;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #ffffff;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .title-bar {
+            background-color: #00aa00;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 2px solid #ffffff;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .game-info {
+            padding: 20px;
+            border: 1px solid #00aa00;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .info-header {
+            color: #ffff00;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #00aa00;
+            padding-bottom: 5px;
+        }
+
+        .description {
+            padding: 15px;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .description p {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .description p::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #00aa00;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #00aa00;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #ffffff;
+            color: #000084;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: #aa0000;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000084;
+            border-top: 2px solid #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .metadata {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 15px;
+            border: 1px dashed #00aa00;
+            margin-bottom: 20px;
+        }
+
+        .metadata div {
+            display: flex;
+            align-items: center;
+        }
+
+        .metadata span {
+            color: #ffff00;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-bar">
+            <h1>Hikikomori - A Story of Isolation</h1>
+        </div>
+
+        <div class="game-info">
+            <h2 class="info-header">Game Information</h2>
+            <div class="metadata">
+                <div><span>Release Date:</span> 2020</div>
+                <div><span>Genre:</span> Interactive Story</div>
+                <div><span>Setting:</span> Modern Day Japan</div>
+                <div><span>Theme:</span> Social Isolation</div>
+            </div>
+        </div>
+
+        <h2 class="info-header">Story Overview</h2>
+        <div class="description">
+            <p>Created during the COVID-19 epidemic in 2020, Hikikomori tells a story that resonates with the global experience of isolation...</p>
+            
+            <p>You embody a young man who has chosen the path of a Hikikomori - a social recluse. Your daily life consists of gaming, online interactions, writing poetry, and playing your rusty guitar.</p>
+            
+            <p>Haunted by memories of your past, you find yourself at a crossroads. Despite finding comfort in your isolated world, a part of you yearns for a return to normal life.</p>
+            
+            <p>An opportunity presents itself through an email from the "Yuka-Yuka Center" - a rehabilitation facility offering support in your journey back to society. They extend their hand to help you with social reintegration and finding employment.</p>
+            
+            <p>The choice lies before you: Will you take their offer and step back into the world, or remain in your familiar solitude?</p>
+        </div>
+
+        <div class="buttons">
+            <a href="game1.html" class="btn">Play Game</a>
+            <a href="index.html" class="btn btn-secondary">Back to Menu</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Ronen Blumberg Retro Games Website World | MEMORY: 640K | Press P to Play or ESC to Return</p>
+    </footer>
+</body>
+</html>

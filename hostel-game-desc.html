@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOSTEL - A Two-Part Text Adventure</title>
+    <style>
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #1a1a1a, #2c3e50, #2c3e50, #16222A);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: #ecf0f1;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+            margin: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            color: #00ff00;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .game-image {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+
+        .part {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .part:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .part-1 {
+            border-left: 4px solid #ff0000;
+        }
+
+        .part-2 {
+            border-left: 4px solid #00ff00;
+        }
+
+        h2 {
+            color: #00ffff;
+            margin-bottom: 15px;
+        }
+
+        .play-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00ff00, #008800);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+        }
+
+        .genre-tag {
+            display: inline-block;
+            background-color: rgba(0, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 0.9em;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .back-button {
+            margin-top: 20px;
+            color: #00ffff;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #00ffff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: rgba(0, 255, 255, 0.1);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HOSTEL</h1>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <span class="genre-tag">Text Adventure</span>
+            <span class="genre-tag">Psychological</span>
+            <span class="genre-tag">Sci-Fi</span>
+            <span class="genre-tag">GW-BASIC</span>
+        </div>
+
+        <img src="/images/hostel-image.png" alt="Game Screenshot" class="game-image"/>
+
+        <div class="part part-1">
+            <h2>Part 1: Mental Hostel</h2>
+            <p>Find yourself imprisoned in a mysterious mental hostel. Your primary objectives:</p>
+            <ul>
+                <li>Maintain your sanity in a challenging environment</li>
+                <li>Navigate through the mysterious facility</li>
+                <li>Search for possible escape routes</li>
+                <li>Solve puzzles and overcome obstacles</li>
+            </ul>
+        </div>
+
+        <div class="part part-2">
+            <h2>Part 2: Cosmic Consciousness</h2>
+            <p>Just when you think things couldn't get stranger, they do:</p>
+            <ul>
+                <li>Abducted by an alien UFO</li>
+                <li>Your consciousness transferred to an alien body</li>
+                <li>Navigate alien technology and environments</li>
+                <li>Find a way to pilot the UFO back to Earth</li>
+                <li>Attempt to return to your human form</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="hostel-game.html" class="play-button">Begin Adventure</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="index.html" class="back-button">« Return to Main Terminal</a>
+        </div>
+    </div>
+</body>
+</html>

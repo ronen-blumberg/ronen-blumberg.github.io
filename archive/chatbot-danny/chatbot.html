@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Web Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        #chat-container {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        #input-container {
+            width: 100%;
+            display: flex;
+            gap: 10px;
+        }
+        #user-input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .user-message {
+            background: #e3f2fd;
+            margin-left: 20%;
+        }
+        .bot-message {
+            background: #f5f5f5;
+            margin-right: 20%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .speak-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .speak-button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danny Chatbot</h1>
+    <div id="chat-container"></div>
+    <div id="input-container">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <script>
+        // Initialize speech synthesis
+        const synth = window.speechSynthesis;
+        
+        function speakText(text) {
+            // Stop any ongoing speech
+            synth.cancel();
+            
+            // Create a new utterance
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Speak the text
+            synth.speak(utterance);
+        }
+        
+        var Module = {
+            onRuntimeInitialized: function() {
+                // Load the database and swap words content
+                Promise.all([
+                    fetch('database.txt').then(response => response.text()),
+                    fetch('swapwords.txt').then(response => response.text())
+                ]).then(([databaseContent, swapWordsContent]) => {
+                    try {
+                        // Allocate memory for the strings
+                        const dbPtr = Module._malloc(databaseContent.length + 1);
+                        const swapPtr = Module._malloc(swapWordsContent.length + 1);
+                        
+                        // Write the strings to memory
+                        Module.stringToUTF8(databaseContent, dbPtr, databaseContent.length + 1);
+                        Module.stringToUTF8(swapWordsContent, swapPtr, swapWordsContent.length + 1);
+                        
+                        // Initialize the chatbot
+                        Module.ccall('initChatbot', null, 
+                            ['number', 'number'],
+                            [dbPtr, swapPtr]);
+                            
+                        // Free the allocated memory
+                        Module._free(dbPtr);
+                        Module._free(swapPtr);
+                        
+                        appendMessage("Bot: Hello! I'm Danny Chatbot. How can I help you today?", false);
+                    } catch (error) {
+                        console.error('Error during initialization:', error);
+                        appendMessage("Bot: Error initializing chatbot. Please check the console for details.", false);
+                    }
+                }).catch(error => {
+                    console.error('Error loading files:', error);
+                    appendMessage("Bot: Error loading required files. Please check if database.txt and swapwords.txt exist.", false);
+                });
+            }
+        };
+
+        function sendMessage() {
+            var input = document.getElementById('user-input');
+            var message = input.value.trim();
+            if (message) {
+                try {
+                    appendMessage('You: ' + message, true);
+                    
+                    // Allocate memory for the input string
+                    const inputPtr = Module._malloc(message.length + 1);
+                    Module.stringToUTF8(message, inputPtr, message.length + 1);
+                    
+                    // Call the C function
+                    const resultPtr = Module.ccall('processUserInput', 'number', ['number'], [inputPtr]);
+                    
+                    // Get the result and free memory
+                    const response = Module.UTF8ToString(resultPtr);
+                    Module._free(inputPtr);
+                    Module._free(resultPtr);
+                    
+                    appendMessage('Bot: ' + response, false);
+                } catch (error) {
+                    console.error('Error processing message:', error);
+                    appendMessage('Bot: Sorry, I encountered an error processing your message.', false);
+                }
+                input.value = '';
+            }
+        }
+
+        function appendMessage(message, isUser) {
+            const chatContainer = document.getElementById('chat-container');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            
+            if (isUser) {
+                messageDiv.textContent = message;
+            } else {
+                // For bot messages, add speak button
+                const textSpan = document.createElement('span');
+                textSpan.textContent = message;
+                
+                const speakButton = document.createElement('button');
+                speakButton.className = 'speak-button';
+                speakButton.innerHTML = '🔊';
+                speakButton.onclick = () => speakText(message);
+                
+                messageDiv.appendChild(textSpan);
+                messageDiv.appendChild(speakButton);
+            }
+            
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Handle Enter key
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+    <script src="chatbot.js"></script>
+</body>
+</html>

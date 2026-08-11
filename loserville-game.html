@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loserville - A Journey Through Life</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e2e2e2;
+            padding: 20px;
+            margin: 0;
+        }
+        #jsdos {
+            width: 640px;
+            height: 400px;
+            border: 3px solid #89cff0;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(137, 207, 240, 0.3);
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #4a90e2, #89cff0);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(137, 207, 240, 0.4);
+        }
+        #status {
+            margin: 15px 0;
+            color: #89cff0;
+            font-style: italic;
+        }
+        .instructions {
+            margin: 20px;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+        }
+        .back-button {
+            margin-top: 20px;
+            color: #89cff0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #89cff0;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: rgba(137, 207, 240, 0.1);
+        }
+        .part-indicator {
+            background-color: rgba(137, 207, 240, 0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+    </style>
+    <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+</head>
+<body>
+    <h1>Loserville</h1>
+    <div class="part-indicator">A Three-Part Journey of Life, Death, and Redemption</div>
+    <div id="status">Ready to begin the journey...</div>
+    <canvas id="jsdos"></canvas>
+    <div>
+        <button onclick="startGame()">Begin Story</button>
+        <button onclick="toggleFullscreen()">Fullscreen</button>
+    </div>
+    <div class="instructions">
+        <h3>Journey Guide:</h3>
+        <ul>
+            <li>Use arrow keys or type your choices</li>
+            <li>Press Enter to confirm selections</li>
+            <li>Take time to consider your decisions</li>
+            <li>ESC: Pause journey</li>
+            <li>Alt + Enter: Toggle fullscreen</li>
+            <li>Your choices shape Roy's story</li>
+        </ul>
+    </div>
+    <a href="index.html" class="back-button">« Return to Main Menu</a>
+
+    <script>
+        let dosbox = null;
+
+        async function startGame() {
+            const status = document.getElementById('status');
+            status.textContent = 'Beginning journey...';
+            
+            try {
+                dosbox = Dos(document.getElementById('jsdos'), {
+                    wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+                    wasmUrl: "https://js-dos.com/6.22/current/wdosbox.wasm.js",
+                    cycles: "12000",
+                    autolock: false,
+                    scaleFactor: 1,
+                    renderingMode: "canvas"
+                });
+
+                dosbox.ready((fs, main) => {
+                    fs.extract('/games/LOSER.zip').then(() => {
+                        main([
+                            "-c", "cd LOSER",
+                            "-c", "cycles = 12000",
+                            "-c", "START.BAT"
+                        ])
+                        .then(() => {
+                            status.textContent = 'Your journey has begun...';
+                        })
+                        .catch((error) => {
+                            status.textContent = 'Error: ' + error;
+                        });
+                    }).catch((error) => {
+                        status.textContent = 'Error loading story: ' + error;
+                    });
+                });
+            } catch (error) {
+                status.textContent = 'Error: ' + error.message;
+            }
+        }
+
+        function toggleFullscreen() {
+            const canvas = document.getElementById('jsdos');
+            if (!document.fullscreenElement) {
+                canvas.requestFullscreen().catch(err => {
+                    console.error('Fullscreen error:', err);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.altKey) {
+                toggleFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+---
+layout: default
+title: Personal Blog
+---
+<section class="retro-text">
+    <h2>C:\>BLOG_ENTRIES.EXE</h2>
+    <div class="blog-posts">
+        {% for post in paginator.posts %}
+        <article>
+            <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+            <p class="date">{{ post.date | date_to_string }}</p>
+        </article>
+        {% endfor %}
+        
+        {% if paginator.total_pages > 1 %}
+        <div class="pagination">
+            {% if paginator.previous_page %}
+            <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="btn">PREV_PAGE.EXE</a>
+            {% endif %}
+            
+            {% if paginator.next_page %}
+            <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="btn">NEXT_PAGE.EXE</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>

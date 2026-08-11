@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Hunt - Classic DOS Game</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000084;
+            color: #ffff00;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            border: 1px solid #ffff00;
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 2px 2px #000000;
+            margin-bottom: 30px;
+        }
+
+        .game-image {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border: 2px solid #ffff00;
+            box-shadow: 0 0 15px rgba(255, 255, 0, 0.3);
+        }
+
+        .gameplay {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 3px solid #ffff00;
+        }
+
+        .play-button {
+            display: inline-block;
+            background-color: #ffff00;
+            color: #000084;
+            padding: 15px 40px;
+            text-decoration: none;
+            border: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .play-button:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .credits {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: #ffffff;
+        }
+
+        .back-button {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #ffffff;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes coinSpin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .coin-icon {
+            display: inline-block;
+            animation: coinSpin 2s infinite linear;
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>COIN HUNT <span class="coin-icon">●</span></h1>
+
+        <img src="/images/coinhunt-image.png" alt="Coin Hunt Screenshot" class="game-image"/>
+
+        <div class="gameplay">
+            <h2>The Adventure Begins!</h2>
+            <p>Navigate through dangerous mazes collecting precious coins while avoiding hungry monsters. Each level presents a new challenge as you strive to collect every coin. But beware - three hits from the monsters and it's game over!</p>
+            
+            <h3>Game Features:</h3>
+            <ul>
+                <li>Classic coin collection gameplay</li>
+                <li>Progressive difficulty levels</li>
+                <li>Monster AI challenges</li>
+                <li>Three lives system</li>
+            </ul>
+        </div>
+
+        <div class="credits">
+            Created by WALRUS (2022)<br>
+            A FreeBASIC Game for DOS
+        </div>
+
+        <div style="text-align: center;">
+            <a href="coinhunt-game.html" class="play-button">Start Adventure</a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-button">« Return to Main Menu</a>
+        </div>
+    </div>
+</body>
+</html>

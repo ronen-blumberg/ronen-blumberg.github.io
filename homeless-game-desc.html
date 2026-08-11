@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Homeless Survival - Game Description</title>
+   <style>
+       /* CRT and DOS-style effects */
+       @keyframes flicker {
+           0% { opacity: 0.97; }
+           5% { opacity: 0.95; }
+           10% { opacity: 0.97; }
+           15% { opacity: 0.94; }
+           20% { opacity: 0.98; }
+           25% { opacity: 0.95; }
+           30% { opacity: 0.97; }
+           35% { opacity: 0.96; }
+           40% { opacity: 0.97; }
+           45% { opacity: 0.94; }
+           50% { opacity: 0.98; }
+           55% { opacity: 0.95; }
+           60% { opacity: 0.97; }
+           65% { opacity: 0.95; }
+           70% { opacity: 0.98; }
+           75% { opacity: 0.94; }
+           80% { opacity: 0.97; }
+           85% { opacity: 0.96; }
+           90% { opacity: 0.98; }
+           95% { opacity: 0.95; }
+           100% { opacity: 0.97; }
+       }
+
+       @keyframes textShadow {
+           0% { text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           5% { text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           10% { text-shadow: 0.02956275843481219px 0 1px rgba(0,30,255,0.5), -0.02956275843481219px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           15% { text-shadow: 0.40218538552878136px 0 1px rgba(0,30,255,0.5), -0.40218538552878136px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           20% { text-shadow: 3.4794037899852017px 0 1px rgba(0,30,255,0.5), -3.4794037899852017px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           25% { text-shadow: 1.6125630401149584px 0 1px rgba(0,30,255,0.5), -1.6125630401149584px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           30% { text-shadow: 0.7015590085143956px 0 1px rgba(0,30,255,0.5), -0.7015590085143956px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           35% { text-shadow: 3.896914047650351px 0 1px rgba(0,30,255,0.5), -3.896914047650351px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           40% { text-shadow: 3.870905614848819px 0 1px rgba(0,30,255,0.5), -3.870905614848819px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           45% { text-shadow: 2.231056963361899px 0 1px rgba(0,30,255,0.5), -2.231056963361899px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           50% { text-shadow: 0.08084290417898504px 0 1px rgba(0,30,255,0.5), -0.08084290417898504px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           55% { text-shadow: 2.3758461067427543px 0 1px rgba(0,30,255,0.5), -2.3758461067427543px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           60% { text-shadow: 2.202193051050636px 0 1px rgba(0,30,255,0.5), -2.202193051050636px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           65% { text-shadow: 2.8638780614874975px 0 1px rgba(0,30,255,0.5), -2.8638780614874975px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           70% { text-shadow: 0.48874025155497314px 0 1px rgba(0,30,255,0.5), -0.48874025155497314px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           75% { text-shadow: 1.8948491305757957px 0 1px rgba(0,30,255,0.5), -1.8948491305757957px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           80% { text-shadow: 0.0833037308038857px 0 1px rgba(0,30,255,0.5), -0.0833037308038857px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           85% { text-shadow: 0.09769827255241735px 0 1px rgba(0,30,255,0.5), -0.09769827255241735px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           90% { text-shadow: 3.443339761481782px 0 1px rgba(0,30,255,0.5), -3.443339761481782px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           95% { text-shadow: 2.1841838852799786px 0 1px rgba(0,30,255,0.5), -2.1841838852799786px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+           100% { text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+       }
+
+       /* Base styles */
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+
+       header .btn {
+           font-size: 1rem;
+           padding: 0.5rem 1rem;
+           margin-top: 1rem;
+       }
+       
+       body {
+           font-family: 'Courier New', Courier, monospace;
+           background-color: #000084;
+           color: #ffffff;
+           line-height: 1.6;
+           overflow-x: hidden;
+           overflow-y: auto;
+           animation: textShadow 1.6s infinite;
+           position: relative;
+           min-height: 100vh;
+           padding-bottom: 60px;
+       }
+
+       body::before {
+           content: "";
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: repeating-linear-gradient(
+               0deg,
+               rgba(0, 0, 0, 0.15),
+               rgba(0, 0, 0, 0.15) 1px,
+               transparent 1px,
+               transparent 2px
+           );
+           pointer-events: none;
+           animation: flicker 0.3s infinite;
+           z-index: -1;
+       }
+
+       header {
+           padding: 2rem;
+           text-align: center;
+           border-bottom: 2px solid #ffffff;
+           background-color: #000084;
+           position: relative;
+           z-index: 1;
+       }
+
+       h1 {
+           font-size: 2.5rem;
+           margin-bottom: 1rem;
+           text-transform: uppercase;
+           letter-spacing: 2px;
+       }
+
+       main {
+           max-width: 800px;
+           margin: 0 auto;
+           padding: 2rem;
+           position: relative;
+           z-index: 1;
+       }
+
+       section {
+           background-color: rgba(0, 0, 0, 0.3);
+           padding: 2rem;
+           border: 1px solid #ffffff;
+           margin: 2rem 0;
+           position: relative;
+       }
+
+       section::before {
+           content: "C:\\>";
+           position: absolute;
+           top: -1.5rem;
+           left: 1rem;
+           background-color: #000084;
+           padding: 0 0.5rem;
+       }
+
+       h2 {
+           font-size: 1.8rem;
+           margin-bottom: 1.5rem;
+           color: #ffff00;
+       }
+
+       p {
+           margin-bottom: 1.5rem;
+           font-size: 1.1rem;
+       }
+
+       ul {
+           list-style-type: none;
+           margin-bottom: 2rem;
+       }
+
+       li {
+           margin-bottom: 0.5rem;
+           padding-left: 1.5rem;
+           position: relative;
+       }
+
+       li::before {
+           content: ">";
+           position: absolute;
+           left: 0;
+           color: #00aa00;
+       }
+
+       .feature-list {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+           gap: 1rem;
+           margin: 2rem 0;
+       }
+
+       .feature-item {
+           background: rgba(0, 0, 0, 0.2);
+           padding: 1rem;
+           border: 1px solid #00aa00;
+       }
+
+       .btn {
+           display: inline-block;
+           background-color: #00aa00;
+           color: #ffffff;
+           padding: 1rem 2rem;
+           text-decoration: none;
+           border: 2px solid #ffffff;
+           transition: all 0.3s ease;
+           cursor: pointer;
+           font-family: 'Courier New', Courier, monospace;
+           font-weight: bold;
+           text-transform: uppercase;
+           margin: 0.5rem;
+       }
+
+       .btn:hover {
+           background-color: #ffffff;
+           color: #000084;
+           box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+       }
+
+       .button-container {
+           display: flex;
+           justify-content: center;
+           gap: 1rem;
+           margin-top: 2rem;
+       }
+
+       footer {
+           text-align: center;
+           padding: 1rem;
+           background-color: #000084;
+           border-top: 2px solid #ffffff;
+           position: fixed;
+           bottom: 0;
+           left: 0;
+           width: 100%;
+           z-index: 10;
+       }
+
+       /* Game status bars */
+       .status-bars {
+           display: grid;
+           grid-template-columns: 1fr;
+           gap: 1rem;
+           margin: 2rem 0;
+       }
+
+       .status-bar {
+           background: rgba(0, 0, 0, 0.3);
+           border: 1px solid #ffffff;
+           padding: 1rem;
+       }
+
+       .bar-label {
+           display: block;
+           margin-bottom: 0.5rem;
+           color: #00aa00;
+       }
+
+       .bar-container {
+           width: 100%;
+           height: 20px;
+           background: #000000;
+           border: 1px solid #ffffff;
+       }
+
+       .bar-fill {
+           height: 100%;
+           background: #00aa00;
+           width: 75%;
+           transition: width 0.3s ease;
+       }
+
+       @keyframes blink {
+           0%, 49% { opacity: 1; }
+           50%, 100% { opacity: 0; }
+       }
+
+       .cursor {
+           display: inline-block;
+           width: 10px;
+           height: 1.2em;
+           background: #ffffff;
+           margin-left: 5px;
+           animation: blink 1s infinite;
+       }
+
+   </style>
+</head>
+<body>
+   <header>
+       <h1 class="typing">HOMELESS.EXE</h1>
+       <a href="index.html" class="btn">BACK TO MAIN</a>
+   </header>
+   
+   <main>
+       <section>
+           <h2>C:\>LOADING_GAME_INFO.EXE</h2>
+           <p>INITIALIZING HOMELESS SURVIVAL SIMULATION...<span class="cursor"></span></p>
+           
+           <div class="status-bars">
+               <div class="status-bar">
+                   <span class="bar-label">SYSTEM STATUS: READY</span>
+                   <div class="bar-container">
+                       <div class="bar-fill"></div>
+                   </div>
+               </div>
+           </div>
+
+           <h2>C:\>GAME_DESCRIPTION.TXT</h2>
+           <p>A text-based survival game where every choice matters. You find yourself on the streets, struggling to survive day by day. Your decisions will determine your fate - will you make it out, or become another statistic?</p>
+
+           <div class="feature-list">
+               <div class="feature-item">
+                   <h3>> KEY FEATURES</h3>
+                   <ul>
+                       <li>Hebrew Text Interface</li>
+                       <li>Multiple Endings</li>
+                       <li>Real Life Choices</li>
+                       <li>Resource Management</li>
+                   </ul>
+               </div>
+               
+               <div class="feature-item">
+                   <h3>> GAMEPLAY STATS</h3>
+                   <ul>
+                       <li>Health System</li>
+                       <li>Money Management</li>
+                       <li>5 Daily Actions</li>
+                       <li>Random Events</li>
+                   </ul>
+               </div>
+           </div>
+
+           <h2>C:\>CONTROLS.TXT</h2>
+           <ul>
+               <li>Use keys 1-5 to select actions</li>
+               <li>Each turn affects your health and money</li>
+               <li>Make choices wisely to survive</li>
+               <li>Watch your resources carefully</li>
+           </ul>
+
+           <div class="button-container">
+               <a href="webgames/homeless-game/game.html" class="btn">RUN HOMELESS.EXE</a>
+           </div>
+       </section>
+   </main>
+
+   <footer>
+       <p>© 2024 Ronen Blumberg Retro Games Website World | MEMORY: 640K OK | DOS Version 2024</p>
+   </footer>
+</body>
+</html>

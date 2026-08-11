@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVIV-BOT - 90s Memory Chatbot</title>
+    <style>
+        @font-face {
+            font-family: 'VT323';
+            src: url('https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJU.woff2') format('woff2');
+        }
+
+        body {
+            background: linear-gradient(45deg, #FF69B4, #4B0082);
+            color: #fff;
+            font-family: 'VT323', 'Courier New', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 20px #00ffff;
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff7f00, #ffff00, #00ff00, 
+                #0000ff, #4b0082, #8f00ff);
+            animation: rainbow 2s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        h1 {
+            color: #00ffff;
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px #ff00ff;
+        }
+
+        .game-image {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 15px #00ffff;
+        }
+
+        .description {
+            font-size: 1.2em;
+            margin: 25px 0;
+            padding: 20px;
+            background-color: rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .features {
+            background: rgba(255, 105, 180, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ff69b4;
+        }
+
+        .memory-box {
+            background: rgba(75, 0, 130, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .start-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            text-shadow: 1px 1px #000;
+        }
+
+        .start-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .back-button {
+            margin-top: 20px;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .retro-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .retro-icon {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AVIV-BOT</h1>
+
+        <img src="/images/avivbot-image.png" alt="AVIV-BOT Screenshot" class="game-image"/>
+        
+        <div class="description">
+            A pre-ChatGPT, pre-1990s chatbot dedicated to the memory of Aviv - a cherished friend from the 90s.
+            Not an LLM model, but a heartfelt tribute to friendship and nostalgia.
+        </div>
+
+        <div class="retro-icons">
+            <span class="retro-icon">📼 90s Culture</span>
+            <span class="retro-icon">🎵 90s Music</span>
+            <span class="retro-icon">🎬 90s Movies</span>
+            <span class="retro-icon">📚 90s Books</span>
+            <span class="retro-icon">🌆 Jerusalem</span>
+        </div>
+
+        <div class="features">
+            <h3>Chat Topics:</h3>
+            <ul>
+                <li>Memories of Jerusalem in the 1990s</li>
+                <li>Iconic 90s movies and music</li>
+                <li>Books and culture from the era</li>
+                <li>Stories about Aviv</li>
+                <li>Information about the bot and its developer</li>
+            </ul>
+        </div>
+
+        <div class="memory-box">
+            "A digital time capsule of friendship and memories from the 1990s..."
+        </div>
+
+        <div style="text-align: center;">
+            <a href="avivbot-game.html" class="start-button">Start Chatting</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="index.html" class="back-button">« Return to Main Menu</a>
+        </div>
+    </div>
+</body>
+</html>

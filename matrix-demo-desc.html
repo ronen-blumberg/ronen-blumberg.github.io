@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATRIX Demo - FreeBASIC DOS Demo</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, 
+                rgba(0,0,0,0.9) 0%,
+                rgba(0,15,0,0.9) 50%,
+                rgba(0,0,0,0.9) 100%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #00ff00;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #00ff00;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+            }
+            to {
+                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            }
+        }
+
+        .game-image {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .demo-info {
+            background-color: rgba(0, 25, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 3px solid #00ff00;
+        }
+
+        .tech-specs {
+            background-color: rgba(0, 15, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .launch-button {
+            display: inline-block;
+            background-color: #003300;
+            color: #00ff00;
+            padding: 15px 40px;
+            text-decoration: none;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .launch-button:hover {
+            background-color: #00ff00;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        .back-button {
+            margin-top: 20px;
+            color: #00ff00;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: rgba(0, 255, 0, 0.1);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-rain"></div>
+    <div class="container">
+        <h1>MATRIX Demo</h1>
+        
+        <img src="/images/matrix-image.png" alt="Matrix Demo Screenshot" class="game-image"/>
+        
+        <div class="demo-info">
+            <h2>Welcome to the System</h2>
+            <p>A FreeBASIC for DOS demonstration inspired by "The Matrix". This demo showcases
+            an alternate take on the iconic film while demonstrating the capabilities of FreeBASIC
+            in the DOS environment.</p>
+        </div>
+
+        <div class="tech-specs">
+            <h3>Technical Features:</h3>
+            <ul class="feature-list">
+                <li>Built with FreeBASIC for DOS</li>
+                <li>Enhanced graphics capabilities</li>
+                <li>Dynamic sound and music integration</li>
+                <li>Custom visual effects</li>
+                <li>DOSBox optimized performance</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="matrix-demo.html" class="launch-button">Enter The Matrix</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="index.html" class="back-button">« Return to Main Terminal</a>
+        </div>
+    </div>
+</body>
+</html>

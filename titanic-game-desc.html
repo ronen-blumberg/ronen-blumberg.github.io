@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITANIC - Survival Text Adventure</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: #e2e2e2;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid #4a6670;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .water-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(0deg, 
+                rgba(0, 20, 40, 0.3) 0%,
+                transparent 50%);
+            pointer-events: none;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            font-family: 'Times New Roman', serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-image {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border: 3px solid #4a6670;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .description {
+            font-size: 1.2em;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #4a6670;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .emergency-box {
+            background-color: rgba(139, 0, 0, 0.2);
+            padding: 20px;
+            border: 2px solid #8b0000;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(139, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0); }
+        }
+
+        .start-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #8b0000, #cc0000);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Times New Roman', serif;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button {
+            margin-top: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .info-tag {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="water-effect"></div>
+        <h1>TITANIC</h1>
+        
+        <div style="text-align: center;">
+            <span class="info-tag">Text Adventure</span>
+            <span class="info-tag">Survival</span>
+            <span class="info-tag">Historical</span>
+            <span class="info-tag">GW-BASIC</span>
+        </div>
+
+        <img src="https://i.imgur.com/Xw2R2Y7.png" alt="Titanic Game Screenshot" class="game-image"/>
+        
+        <div class="emergency-box">
+            ⚠ EMERGENCY: SHIP STRUCK ICEBERG - VESSEL TAKING ON WATER ⚠
+        </div>
+
+        <div class="description">
+            <p>You are a passenger aboard the RMS Titanic on its fateful maiden voyage. 
+            After striking an iceberg in the North Atlantic, the "unsinkable" ship is going down. 
+            Time is running out as you navigate the increasingly treacherous corridors and decks, 
+            searching desperately for a way to reach the lifeboats.</p>
+            
+            <p>Your decisions will determine your fate. Will you survive one of history's most 
+            famous maritime disasters, or will you become one of the many souls lost to the 
+            frigid waters of the Atlantic?</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="titanic-game.html" class="start-button">Begin Survival</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="index.html" class="back-button">« Return to Main Menu</a>
+        </div>
+    </div>
+</body>
+</html>

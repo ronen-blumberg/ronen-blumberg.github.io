@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seinfeld Chatbot</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .chat-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            padding: 20px;
+            height: 400px;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #e6f7ff;
+            margin-left: 50px;
+            margin-right: 10px;
+        }
+        .bot-message {
+            background-color: #f2f2f2;
+            margin-right: 50px;
+            margin-left: 10px;
+        }
+        .input-area {
+            display: flex;
+            margin-top: 20px;
+        }
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        #send-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #send-button:hover {
+            background-color: #45a049;
+        }
+        .character-name {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #666;
+        }
+        .status-message {
+            color: #666;
+            text-align: center;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .train-model {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #train-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #train-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Seinfeld Markov Chain Chatbot</h1>
+    </header>
+    
+    <div class="container">
+        <div id="initial-loading" class="loading">
+            Loading Python environment... Please wait.
+        </div>
+        
+        <div id="chat-interface" style="display: none;">
+            <div class="chat-container" id="chat-container">
+                <div class="message bot-message">
+                    <span class="character-name">Jerry:</span> Welcome to the Seinfeld chatbot! What's the deal with online chatbots anyway?
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Type your message here..." autofocus>
+                <button id="send-button" py-click="send_message()">Send</button>
+            </div>
+            
+            <div id="status-message" class="status-message"></div>
+            
+            <div class="train-model">
+                <button id="train-button" py-click="train_model()">Train New Model</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        Seinfeld Chatbot powered by PyScript © 2025
+    </footer>
+
+    <py-config>
+        packages = []
+    </py-config>
+    
+    <py-script src="seinfeld_web_chatbot.py"></py-script>
+</body>
+</html>

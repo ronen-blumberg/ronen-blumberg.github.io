@@ -1,0 +1,204 @@
+/* Rachel Chatbot Styling */
+:root {
+  --dark-bg: #1a1a1a;
+  --chat-bg: #2a2a2a;
+  --sidebar-bg: #252525;
+  --message-bg: #3a3a3a;
+  --rachel-message-bg: #403040;
+  --input-bg: #333333;
+  --accent: #0078d7;
+  --text: #e0e0e0;
+  --text-muted: #aaaaaa;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Chat container layout */
+.chat-container {
+  display: flex;
+  height: calc(100vh - 20px);
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Sidebar with Rachel image */
+.chat-sidebar {
+  width: 300px;
+  background-color: var(--sidebar-bg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #444;
+}
+
+.rachel-image {
+  width: 220px;
+  height: 300px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.rachel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chat-sidebar h2 {
+  margin: 0;
+  color: var(--text);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-top: 5px;
+}
+
+/* Main chat area */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--chat-bg);
+}
+
+/* Messages display area */
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  max-width: 75%;
+}
+
+.user-message {
+  background-color: var(--message-bg);
+  align-self: flex-end;
+}
+
+.rachel-message {
+  background-color: var(--rachel-message-bg);
+  align-self: flex-start;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Input area */
+.chat-input {
+  display: flex;
+  padding: 15px;
+  background-color: var(--input-bg);
+  border-top: 1px solid #444;
+}
+
+#messageInput {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: var(--text);
+  margin-right: 10px;
+}
+
+#sendButton {
+  padding: 0 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#sendButton:hover {
+  background-color: #0085ea;
+}
+
+.chat-commands {
+  padding: 10px;
+  background-color: #222;
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 0.9em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .chat-container {
+    flex-direction: column;
+  }
+  
+  .chat-sidebar {
+    width: 100%;
+    padding: 10px;
+    flex-direction: row;
+    height: 120px;
+    border-right: none;
+    border-bottom: 1px solid #444;
+  }
+  
+  .rachel-image {
+    width: 80px;
+    height: 100px;
+    margin: 0 15px 0 0;
+  }
+  
+  .chat-main {
+    height: calc(100vh - 180px);
+  }
+}
+
+/* Hide footer in chat view */
+footer {
+  display: none;
+}
+
+/* Hide header in chat view */
+header {
+  display: none;
+}

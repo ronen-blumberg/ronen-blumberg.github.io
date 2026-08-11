@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Hacking - Neural Interface</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        
+        :root {
+            --primary-color: #00c3ff;
+            --secondary-color: #d400ff;
+            --bg-color: #0a0a1a;
+            --dark-bg: #050510;
+            --text-color: #e0e0ff;
+            --glow-strength: 5px;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(0, 195, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(212, 0, 255, 0.1) 0%, transparent 50%);
+            color: var(--text-color);
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        header {
+            width: 100%;
+            background-color: var(--dark-bg);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 195, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+            animation: scanline 2s linear infinite;
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            text-shadow: 0 0 var(--glow-strength) rgba(0, 195, 255, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        main {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        
+        .game-container {
+            background-color: var(--dark-bg);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(0, 195, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 195, 255, 0.2);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .game-container::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        #jsdos {
+            width: 100%;
+            height: 400px;
+            border-radius: 5px;
+            margin: 10px auto;
+            display: block;
+            background-color: #000;
+        }
+        
+        #status {
+            text-align: center;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-left: 3px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        button {
+            background-color: rgba(10, 10, 30, 0.7);
+            color: var(--text-color);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+        
+        button:hover::before {
+            opacity: 0.8;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .info-panel {
+            background-color: var(--dark-bg);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(212, 0, 255, 0.3);
+            margin-bottom: 20px;
+        }
+        
+        .info-panel h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            border-bottom: 1px solid rgba(212, 0, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .commands {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .commands li {
+            padding: 10px;
+            border-left: 2px solid var(--secondary-color);
+            margin-bottom: 10px;
+            background-color: rgba(10, 10, 30, 0.3);
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .commands li span {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: var(--text-color);
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgba(10, 10, 30, 0.5);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 195, 255, 0.2);
+        }
+        
+        .back-link:hover {
+            background-color: rgba(0, 195, 255, 0.2);
+        }
+        
+        .glitch-effect {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .glitch-effect::before,
+        .glitch-effect::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+        }
+        
+        .glitch-effect::before {
+            color: var(--primary-color);
+            z-index: -1;
+        }
+        
+        .glitch-effect::after {
+            color: var(--secondary-color);
+            z-index: -2;
+        }
+        
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(20% 0 80% 0); transform: translate(-1px, -1px); }
+            20% { clip-path: inset(60% 0 40% 0); transform: translate(1px, 1px); }
+            40% { clip-path: inset(40% 0 60% 0); transform: translate(-1px, 1px); }
+            60% { clip-path: inset(80% 0 20% 0); transform: translate(1px, -1px); }
+            80% { clip-path: inset(50% 0 50% 0); transform: translate(1px, -1px); }
+            100% { clip-path: inset(20% 0 80% 0); transform: translate(-1px, 1px); }
+        }
+        
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(30% 0 70% 0); transform: translate(1px, -1px); }
+            20% { clip-path: inset(10% 0 90% 0); transform: translate(-1px, 1px); }
+            40% { clip-path: inset(70% 0 30% 0); transform: translate(1px, 1px); }
+            60% { clip-path: inset(20% 0 80% 0); transform: translate(-1px, -1px); }
+            80% { clip-path: inset(40% 0 60% 0); transform: translate(1px, -1px); }
+            100% { clip-path: inset(30% 0 70% 0); transform: translate(-1px, 1px); }
+        }
+        
+        .button-glitch:hover::before {
+            animation: glitch-anim-1 0.3s infinite linear alternate-reverse;
+        }
+        
+        .button-glitch:hover::after {
+            animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+        }
+        
+        footer {
+            margin-top: auto;
+            width: 100%;
+            background-color: var(--dark-bg);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+    <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+</head>
+<body>
+    <header>
+        <h1>DREAM HACKING</h1>
+        <div class="subtitle">Neural Interface v2.0</div>
+    </header>
+    
+    <main>
+        <div class="game-container">
+            <div id="status">SYSTEM STANDBY // AWAITING INITIALIZATION</div>
+            <canvas id="jsdos"></canvas>
+            <div class="controls">
+                <button onclick="startGame()" class="button-glitch" data-text="INITIALIZE">INITIALIZE</button>
+                <button onclick="toggleFullscreen()" class="button-glitch" data-text="EXPAND VIEW">EXPAND VIEW</button>
+            </div>
+        </div>
+        
+        <div class="info-panel">
+            <h3>NEURAL INTERFACE COMMANDS</h3>
+            <ul class="commands">
+                <li><span>ESC</span> Emergency system pause</li>
+                <li><span>ALT+ENTER</span> Neural display expansion</li>
+                <li><span>ARROWS</span> Neural pathway navigation</li>
+                <li><span>ENTER</span> Execute neural command</li>
+            </ul>
+        </div>
+        
+        <a href="index.html" class="back-link">« RETURN TO MAIN SYSTEM</a>
+    </main>
+    
+    <footer>
+        DREAM HACKING NEURAL INTERFACE &copy; 2025 // UNAUTHORIZED ACCESS PROHIBITED
+    </footer>
+
+    <script>
+        let dosbox = null;
+
+        async function startGame() {
+            const status = document.getElementById('status');
+            status.textContent = 'INITIALIZING NEURAL INTERFACE...';
+            
+            try {
+                dosbox = Dos(document.getElementById('jsdos'), {
+                    wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+                    wasmUrl: "https://js-dos.com/6.22/current/wdosbox.wasm.js",
+                    cycles: "12000",
+                    autolock: false,
+                    scaleFactor: 1,
+                    renderingMode: "canvas"
+                });
+
+                dosbox.ready((fs, main) => {
+                    status.textContent = 'LOADING NEURAL PATTERNS...';
+                    
+                    // Using lowercase "zip" extension as you confirmed works
+                    fs.extract('/games/DREAMHAK.zip').then(() => {
+                        status.textContent = 'EXECUTING DREAM PROTOCOL...';
+                        
+                        main([
+                            "-c", "cd DREAMHAK",
+                            "-c", "cycles = 12000",
+                            "-c", "QBSTART.BAT"
+                        ])
+                        .then(() => {
+                            status.textContent = 'NEURAL INTERFACE ACTIVE // CONNECTION ESTABLISHED';
+                        })
+                        .catch((error) => {
+                            status.textContent = 'NEURAL CONNECTION FAILURE';
+                        });
+                    }).catch((error) => {
+                        status.textContent = 'PATTERN ACQUISITION FAILURE';
+                    });
+                });
+            } catch (error) {
+                status.textContent = 'CRITICAL NEURAL SYSTEM FAILURE';
+            }
+        }
+
+        function toggleFullscreen() {
+            const canvas = document.getElementById('jsdos');
+            if (!document.fullscreenElement) {
+                canvas.requestFullscreen().catch(err => {
+                    console.error('Neural expansion error:', err);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.altKey) {
+                toggleFullscreen();
+            }
+        });
+        
+        // Add glitch effect animation for buttons on hover
+        document.querySelectorAll('.button-glitch').forEach(button => {
+            button.setAttribute('data-text', button.textContent);
+        });
+    </script>
+</body>
+</html>

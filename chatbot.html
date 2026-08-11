@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Site Assistant</title>
+    <style>
+        body {
+            background: #000084;
+            color: #33ff33;
+            font-family: 'Courier New', monospace;
+        }
+        .chat-container {
+            width: 800px;
+            height: 600px;
+            border: 2px solid #33ff33;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 15px rgba(51, 255, 51, 0.2);
+            background: #000;
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .message {
+            margin: 10px;
+            padding: 15px;
+            border-radius: 0;
+            max-width: 70%;
+            font-size: 16px;
+            border: 1px solid #33ff33;
+        }
+        .bot {
+            background: #001100;
+            align-self: flex-start;
+        }
+        .user {
+            background: #002200;
+            align-self: flex-end;
+        }
+        .chat-input {
+            display: flex;
+            padding: 20px;
+            background: #000;
+            border-top: 1px solid #33ff33;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            margin-right: 10px;
+            background: #000;
+            border: 1px solid #33ff33;
+            color: #33ff33;
+            font-family: 'Courier New', monospace;
+        }
+        .chat-input button {
+            padding: 12px 25px;
+            background: #001100;
+            color: #33ff33;
+            border: 1px solid #33ff33;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        .chat-input button:hover {
+            background: #002200;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">C:\>ASSISTANT.EXE loaded! Type HELP for available commands.</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Enter command...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+const responses = {
+    // Core commands
+    "help": "Available sections:\n- DOS_GAMES (classic games)\n- WEB_GAMES (browser games)\n- DEMOS (demos)\n- VIDEOS (video content)\n- BLOG (articles)\n- CHAT (live chat)\n- FORUM (discussions)\nType 'info [section]' for details.",
+    "about": "Hi! I'm ron77, born 1977 in Israel. Self-taught programmer since 2016, mainly using FreeBASIC. I create DOS-style games and love retro computing.",
+    
+    // Games detailed info
+    "dos games": "Current DOS games:\n- HIKIKOMORI (social isolation)\n- LOST_ART (dystopian future)\n- GAZA (conflict survival)\n- MENTAL (psychological)\n- HOSTEL (adventure)\n- AVIVBOT (AI chat)\n- LOSERVILLE (life sim)\n- TITANIC (historical)\n- PEACEMAKER (politics)\n- PROTECTED_HOUSING (survival)\nType 'info [game]' for details.",
+    "web games": "Browser games:\n- SPACE_SHOOTER (arcade)\n- HOMELESS (survival)\n- MANDELBROT_DEMO (math art)\n- NIGHT_STORY (adventure)",
+    
+    // Game specifics
+    "hikikomori": "Text-based game exploring themes of social isolation and mental health. Play as a hikikomori trying to reconnect with the world.",
+    "lost art": "Dystopian future where coding is forbidden. Learn programming secretly to save humanity's lost knowledge.",
+    "gaza": "Survival text adventure set in conflict zone. Navigate challenges and moral choices.",
+    "mental": "Deep psychological narrative exploring mental health through interactive fiction.",
+    "hostel": "Text adventure in a mysterious hostel. Uncover dark secrets and survive the night.",
+    "avivbot": "Chat with an AI bot named Aviv. Early experiment in conversational AI.",
+    "loserville": "Life simulation in a town of outcasts. Find your place in Loserville.",
+    "titanic": "Historical fiction aboard the Titanic. Experience the last hours through text.",
+    "peacemaker": "Political simulation about conflict resolution.",
+    "protected housing": "Survival game in protected community housing.",
+    "space shooter": "Classic arcade-style space shooter built with modern web tech.",
+    "homeless": "Survival simulation about homelessness and society.",
+    "night story": "Interactive fiction about a mysterious night.",
+    "mandelbrot": "Interactive Mandelbrot set explorer with zoom.",
+
+    // Site sections
+    "demos": "Technical demos including MATRIX.EXE - text-based Matrix effect.",
+    "blog": "Personal blog about life experiences, mental health, and programming journey.",
+    "chat": "Real-time chat room for community discussion.",
+    "forum": "Discussion board for retro computing and game dev.",
+    "videos": "Video content on Odysee covering games and programming.",
+    
+    // Tech/Programming
+    "programming": "Main languages:\n- FreeBASIC (primary)\n- QB64\n- JavaScript\n- Python\n- C/C++\nFocus on DOS-style and text-based applications.",
+    "freebasic": "My main programming language. Great for DOS-style applications and games.",
+    "emscripten": "I use this to compile DOS games to web format.",
+    "dosbox": "DOS emulator used to run games in browser.",
+    
+    // General chat
+    "hi": "Hello! I'm the site assistant. Type HELP to see what I can do.",
+    "hello": "Hi there! Need help finding something? Type HELP for options.",
+    "how are you": "Running at optimal capacity! All systems green.",
+    "who are you": "I'm the site's assistant bot. Here to help navigate games and content.",
+    "what's new": "Check the blog for latest updates and new game releases!",
+    "thanks": "You're welcome! Type HELP if you need anything else.",
+    "bye": "Goodbye! Come back soon for more retro computing fun!",
+    
+    // Default
+    "default": "Command not recognized. Type HELP for available commands or try asking about specific games/sections."
+};
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim().toLowerCase();
+            
+            if (message === '') return;
+
+            addMessage(input.value, 'user');
+            input.value = '';
+
+            setTimeout(() => {
+                let response = responses.default;
+                
+                for (let key in responses) {
+                    if (message.includes(key)) {
+                        response = responses[key];
+                        break;
+                    }
+                }
+                
+                addMessage(response, 'bot');
+            }, 500);
+        }
+
+        function addMessage(text, sender) {
+            const messages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = text;
+            messages.appendChild(messageDiv);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

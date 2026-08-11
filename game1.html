@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Hikikomori - DOS Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        #jsdos {
+            width: 640px;
+            height: 400px;
+            border: 2px solid #333;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #status {
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .instructions {
+            margin: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 800px;
+        }
+    </style>
+    <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+</head>
+<body>
+    <h1>Play Hikikomori on DOS</h1>
+    <div id="status">Ready to start...</div>
+    <canvas id="jsdos"></canvas>
+    <div>
+        <button onclick="startGame()">Start Game</button>
+        <button onclick="toggleFullscreen()">Fullscreen</button>
+    </div>
+    <div class="instructions">
+        <h3>Controls:</h3>
+        <ul>
+            <li>Press F4: Change CPU speed</li>
+            <li>Alt + Enter: Fullscreen</li>
+            <li>ESC: Release mouse/keyboard</li>
+        </ul>
+    </div>
+
+    <script>
+        let dosbox = null;
+
+        async function startGame() {
+            const status = document.getElementById('status');
+            status.textContent = 'Starting...';
+            
+            try {
+                dosbox = Dos(document.getElementById('jsdos'), {
+                    wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+                    wasmUrl: "https://js-dos.com/6.22/current/wdosbox.wasm.js",
+                    cycles: "12000",         // Fixed cycles at 12000
+                    autolock: false,         // Disabled autolock
+                    scaleFactor: 1,          // Base scaling
+                    renderingMode: "canvas"  // Canvas rendering
+                });
+
+                dosbox.ready((fs, main) => {
+                    fs.extract('/games/HIKIKO.zip').then(() => {
+                        main([
+                            "-c", "cd HIKIKO",
+                            "-c", "cycles = 12000", // Ensure cycles are set in DOS
+                            "-c", "START.BAT"
+                        ])
+                        .then(() => {
+                            status.textContent = 'Game running!';
+                        })
+                        .catch((error) => {
+                            status.textContent = 'Error: ' + error;
+                        });
+                    }).catch((error) => {
+                        status.textContent = 'Error loading game: ' + error;
+                    });
+                });
+            } catch (error) {
+                status.textContent = 'Error: ' + error.message;
+            }
+        }
+
+        function toggleFullscreen() {
+            const canvas = document.getElementById('jsdos');
+            if (!document.fullscreenElement) {
+                canvas.requestFullscreen().catch(err => {
+                    console.error('Fullscreen error:', err);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.altKey) {
+                toggleFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

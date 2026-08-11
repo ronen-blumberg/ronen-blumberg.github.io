@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACKER</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #00ff00;
+            padding: 20px;
+            margin: 0;
+        }
+        #jsdos {
+            width: 640px;
+            height: 400px;
+            border: 2px solid #00ff00;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #003300;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            margin: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+        }
+        button:hover {
+            background-color: #00ff00;
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+        #status {
+            margin: 15px 0;
+            color: #00ff00;
+            font-style: italic;
+        }
+        .instructions {
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(0, 20, 0, 0.5);
+            border: 1px solid #00ff00;
+            max-width: 800px;
+        }
+        .back-button {
+            margin-top: 20px;
+            color: #00ff00;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #00ff00;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: rgba(0, 255, 0, 0.1);
+        }
+    </style>
+    <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+</head>
+<body>
+    <h1>HACKER</h1>
+    <div id="status">Terminal ready...</div>
+    <canvas id="jsdos"></canvas>
+    <div>
+        <button onclick="startGame()">Initialize System</button>
+        <button onclick="toggleFullscreen()">Toggle Display</button>
+    </div>
+    <div class="instructions">
+        <h3>System Commands:</h3>
+        <ul>
+            <li>ESC: System pause</li>
+            <li>Alt + Enter: Display mode toggle</li>
+            <li>Follow on-screen prompts for navigation</li>
+        </ul>
+    </div>
+    <a href="index.html" class="back-button">« Return to Main Terminal</a>
+
+    <script>
+        let dosbox = null;
+
+        async function startGame() {
+            const status = document.getElementById('status');
+            status.textContent = 'Initializing system...';
+            
+            try {
+                dosbox = Dos(document.getElementById('jsdos'), {
+                    wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
+                    wasmUrl: "https://js-dos.com/6.22/current/wdosbox.wasm.js",
+                    cycles: "12000",
+                    autolock: false,
+                    scaleFactor: 1,
+                    renderingMode: "canvas"
+                });
+
+                dosbox.ready((fs, main) => {
+                    fs.extract('/games/HACKER.zip').then(() => {
+                        main([
+                            "-c", "cd HACKER",
+                            "-c", "cycles = 12000",
+                            "-c", "RUN.BAT"
+                        ])
+                        .then(() => {
+                            status.textContent = 'System online. Access granted.';
+                        })
+                        .catch((error) => {
+                            status.textContent = 'System error: ' + error;
+                        });
+                    }).catch((error) => {
+                        status.textContent = 'Access denied: ' + error;
+                    });
+                });
+            } catch (error) {
+                status.textContent = 'Critical error: ' + error.message;
+            }
+        }
+
+        function toggleFullscreen() {
+            const canvas = document.getElementById('jsdos');
+            if (!document.fullscreenElement) {
+                canvas.requestFullscreen().catch(err => {
+                    console.error('Display error:', err);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.altKey) {
+                toggleFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

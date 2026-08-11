@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ0YJSFWPZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PQ0YJSFWPZ');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronen Blumberg Retro Games Website World - Video Archive</title>
+    <style>
+        /* Base styles matching your main theme */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000084;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #ffff00;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .video-section {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border: 1px solid #ffffff;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .video-section::before {
+            content: "VIDEO:\\>";
+            position: absolute;
+            top: -1.5rem;
+            left: 1rem;
+            background-color: #000084;
+            padding: 0 0.5rem;
+            color: #00ff00;
+        }
+
+        .video-wrapper {
+            margin: 20px 0;
+            border: 2px solid #00aa00;
+            box-shadow: 0 0 20px rgba(0, 170, 0, 0.3);
+            background-color: #000000;
+        }
+
+        .video-title {
+            color: #00ff00;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid #00ff00;
+        }
+
+        .video-description {
+            color: #ffffff;
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-left: 3px solid #00aa00;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #00aa00;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .back-button:hover {
+            background-color: #ffffff;
+            color: #000084;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes scanline {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.1);
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-top: 2px solid #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Video Archive</h1>
+
+        <div class="video-section">
+            <div class="video-title">Setting Up FreeBASIC Development Environment (Windows)</div>
+            <div class="video-description">
+                A comprehensive tutorial on setting up a FreeBASIC development environment from scratch on Windows.
+            </div>
+            <div class="video-wrapper">
+                <iframe id="odysee-iframe" style="width:100%; aspect-ratio:16 / 9;" 
+                    src="https://odysee.com/$/embed/FreeBasic_Setup_Windows:8?r=5PHmtdFUhvf4XuZ743WLJCEXyYVxLBve" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-button">« Return to Main Terminal</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Ronen Blumberg Retro Games Website World | MEMORY: 640K OK | DOS Version 2024</p>
+    </footer>
+</body>
+</html>
