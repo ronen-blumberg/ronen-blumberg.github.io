@@ -349,11 +349,11 @@
                     status.textContent = 'LOADING NEURAL PATTERNS...';
                     
                     // Using lowercase "zip" extension as you confirmed works
-                    fs.extract('/games/DREAMHAK.zip').then(() => {
+                    fs.extract('/games/DREAMV12.zip').then(() => {
                         status.textContent = 'EXECUTING DREAM PROTOCOL...';
                         
                         main([
-                            "-c", "cd DREAMHAK",
+                            "-c", "cd DREAMV12",
                             "-c", "cycles = 12000",
                             "-c", "QBSTART.BAT"
                         ])
